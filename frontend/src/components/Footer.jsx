@@ -3,33 +3,15 @@ import {
   FileText, 
   HelpCircle, 
   Monitor, 
-  Server, 
   Users, 
-  Folder, 
   Shield, 
-  RotateCcw,
-  ShoppingCart,
   Smartphone,
-  Globe,
-  Zap,
-  Calendar,
   Cloud,
   Info,
-  Settings,
-  DollarSign,
   BookOpen,
-  Database,
   Code,
-  Share2,
   GitBranch,
-  Archive,
-  Key,
-  Gift,
-  CreditCard,
-  Globe2,
   Mail,
-  HardDrive,
-  RefreshCw,
   Twitter,
   Facebook,
   Instagram,
@@ -101,7 +83,7 @@ const Footer = () => {
   );
 
   return (
-    <footer className="bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 text-gray-300 py-8 px-6">
+    <footer className="bg-custom-hero from-slate-800 via-slate-900 to-slate-800 text-gray-300 py-8 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Services */}
@@ -132,7 +114,7 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email"
-                className="px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
+                className="px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               />
               <button
                 onClick={handleSubscribe}
@@ -140,7 +122,7 @@ const Footer = () => {
                 className={`px-4 py-2 rounded text-sm font-semibold transition-all duration-200 ${
                   isSubscribed 
                     ? 'bg-green-500 text-white' 
-                    : 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white hover:shadow-md'
+                    : 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white hover:shadow-md'
                 }`}
               >
                 {isSubscribed ? 'Subscribed!' : 'Subscribe'}
@@ -157,7 +139,7 @@ const Footer = () => {
                     <a
                       key={index}
                       href={social.href}
-                      className="w-8 h-8 bg-slate-700 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 rounded flex items-center justify-center transition-all duration-300 group"
+                      className="w-8 h-8 bg-slate-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-600 rounded flex items-center justify-center transition-all duration-300 group"
                       aria-label={social.name}
                     >
                       <IconComponent className="w-4 h-4 text-gray-300 group-hover:text-white transition-colors duration-200" />

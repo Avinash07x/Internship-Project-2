@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Menu, X, ChevronDown } from 'lucide-react';
+import DCKNav from "../assets/logo.jpg";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,64 +20,53 @@ const Navbar = () => {
   }, []);
 
   const menuItems = [
-    { name: 'HOME', hasDropdown: true },
-    { name: 'ABOUT', hasDropdown: true },
-    { name: 'FEATURES', hasDropdown: true },
-    { name: 'RESOURCES', hasDropdown: false },
-    { name: 'MENU', hasDropdown: true },
+    { name: 'HOME', hasDropdown: false , link: '/'},
+    { name: 'HOSTING', hasDropdown: true },
+    { name: 'SERVERS', hasDropdown: true },
+    { name: 'FOREX SERVER', hasDropdown: false },
+    { name: 'EMAIL MARKETING', hasDropdown: false },
+    { name: 'ABOUT US', hasDropdown: false },
   ];
 
   const dropdownContent = {
-    HOME: [
-      { name: 'Cloud Storage', link: '#' },
-      { name: 'Hosting', link: '#' },
-      { name: 'Boxed 1', link: '#' },
-      { name: 'Boxed 2', link: '#' },
+    HOSTING: [
+      { name: 'SHARED HOSTING', link: '#' },
+      { name: 'RESELLER HOSTING', link: '#' },
+      { name: 'CMS HOSTING', link: '#' },
     ],
-    ABOUT: [
-      { name: 'About Us Style 1', link: '#' },
-      { name: 'About Us Style 2', link: '#' },
-    ],
-    FEATURES: [
+    SERVERS: [
       {
-        name: 'Pages',
+        name: 'VPS',
         hasSubMenu: true,
         subItems: [
-          { name: 'BENEFITS', link: '#' },
-          { name: 'BLOG', link: '#' },
-          { name: 'GALLERY', link: '#' },
+          { name: 'INDIA', link: '#' },
+          { name: 'FOREIGN', link: '#' },
         ],
       },
       {
-        name: 'Tools',
+        name: 'CLOUD SERVER',
         hasSubMenu: true,
         subItems: [
-          { name: 'Typography', link: '#' },
-          { name: 'Shortcodes', link: '#' },
+          { name: 'INDIA', link: '#' },
+          { name: 'FOREIGN', link: '#' },
         ],
       },
       {
-        name: 'HELP',
+        name: 'DEDICATED SERVER',
         hasSubMenu: true,
         subItems: [
-          { name: 'Service Plus', link: '#' },
-          { name: 'Privacy Policy', link: '#' },
+          { name: 'INDIA', link: '#' },
+          { name: 'FOREIGN', link: '#' },
         ],
       },
-    ],
-    MENU: [
-      { name: 'Menu Item 1', link: '#' },
-      { name: 'Menu Item 2', link: '#' },
     ],
   };
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
   const handleDropdownToggle = (itemName) => {
     setActiveDropdown(activeDropdown === itemName ? null : itemName);
     setActiveSubMenu(null);
   };
-
   const handleSubMenuToggle = (subMenuName) => {
     setActiveSubMenu(activeSubMenu === subMenuName ? null : subMenuName);
   };
@@ -84,13 +75,14 @@ const Navbar = () => {
     <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-3">
-            <span className="text-2xl font-bold text-gray-800">Cloud</span>
-            <span className="hidden md:block text-sm text-gray-500 font-medium">
-              Storage made simple!
-            </span>
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <div className="flex items-center w-[180px] pt-1 relative right-[8px]">
+              <Link to={"/"} target="home"><img src={DCKNav} alt="Logo" /></Link>
+            </div>
           </div>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
               <div key={item.name} className="relative">
@@ -105,9 +97,8 @@ const Navbar = () => {
                   <span>{item.name}</span>
                   {item.hasDropdown && (
                     <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-200 ${
-                        activeDropdown === item.name ? 'rotate-180' : ''
-                      }`}
+                      className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''
+                        }`}
                     />
                   )}
                 </button>
@@ -117,16 +108,15 @@ const Navbar = () => {
                     {dropdownContent[item.name]?.map((dropdownItem, index) => (
                       <div key={index} className="border-b border-gray-100 last:border-b-0">
                         {dropdownItem.hasSubMenu ? (
-                          <div className="px-4 py-2 text-gray-800 font-medium">
+                          <div className="px-4 py-2 text-gray-900 font-medium">
                             <button
                               className="flex items-center justify-between w-full"
                               onClick={() => handleSubMenuToggle(dropdownItem.name)}
                             >
                               <span>{dropdownItem.name}</span>
                               <ChevronDown
-                                className={`w-4 h-4 transition-transform ${
-                                  activeSubMenu === dropdownItem.name ? 'rotate-180' : ''
-                                }`}
+                                className={`w-4 h-4 transition-transform ${activeSubMenu === dropdownItem.name ? 'rotate-180' : ''
+                                  }`}
                               />
                             </button>
                             {activeSubMenu === dropdownItem.name && (
@@ -161,16 +151,20 @@ const Navbar = () => {
             ))}
           </div>
 
+          {/* Desktop Contact + LOGIN */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center text-teal-600 space-x-2">
               <Phone className="w-4 h-4" />
               <span className="font-semibold">1-855-672-2788</span>
             </div>
-            <button className="bg-gradient-to-r from-orange-400 to-orange-500 text-white px-6 py-2 rounded-full font-semibold hover:from-orange-500 hover:to-orange-600 transition">
-              LOGIN
-            </button>
+            <Link to="/login">
+              <button className="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:from-blue-600 hover:to-blue-700 transition">
+                LOGIN
+              </button>
+            </Link>
           </div>
 
+          {/* Mobile menu toggle */}
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
@@ -181,6 +175,7 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-gray-100">
             <div className="px-2 pt-2 pb-3 space-y-1">
@@ -206,9 +201,8 @@ const Navbar = () => {
                               >
                                 <span>{dropdownItem.name}</span>
                                 <ChevronDown
-                                  className={`w-4 h-4 transition-transform ${
-                                    activeSubMenu === dropdownItem.name ? 'rotate-180' : ''
-                                  }`}
+                                  className={`w-4 h-4 transition-transform ${activeSubMenu === dropdownItem.name ? 'rotate-180' : ''
+                                    }`}
                                 />
                               </button>
                               {activeSubMenu === dropdownItem.name && (
@@ -246,9 +240,11 @@ const Navbar = () => {
                 <Phone className="w-4 h-4" />
                 <span className="font-semibold">1-855-672-2788</span>
               </div>
-              <button className="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-white py-2 rounded-full font-semibold hover:from-orange-500 hover:to-orange-600 transition">
-                LOGIN
-              </button>
+              <Link to="/login">
+                <button className="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white py-2 rounded-full font-semibold hover:from-blue-600 hover:to-blue-700 transition">
+                  LOGIN
+                </button>
+              </Link>
             </div>
           </div>
         )}

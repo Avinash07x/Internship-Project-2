@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -39,17 +40,18 @@ export default function ForgotPassword() {
       }, 2000);
     }
   };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-100 to-blue-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md relative overflow-hidden">
+    <div className="min-h-screen bg-white from-green-100 to-blue-100 flex items-center justify-center p-4">
+      <div className="bg-gradient-to-br rounded-lg shadow-xl w-full max-w-md relative overflow-hidden">
         {/* Header */}
-        <div className="bg-teal-700 text-white text-center py-6">
-          <div className="text-2xl mb-2">🔑</div>
+        <div className="bg-blue-350 text-black text-center py-2">
+          <div className="text-xl mb-2">🔑</div>
           <h2 className="text-xl font-semibold">Forgot Password</h2>
         </div>
 
         {/* Form Content */}
-        <div className="p-8">
+        <div className="p-5">
           <div className="space-y-6">
             {/* Instructions */}
             <div className="text-center">
@@ -70,20 +72,19 @@ export default function ForgotPassword() {
                 value={email}
                 onChange={handleInputChange}
                 required
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500 ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder="Enter your email address"
               />
               {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
             </div>
 
-            {/* Send Reset Link Button */}
+            {/* Send OTP Button */}
             <button
               type="button"
               onClick={handleSubmit}
               disabled={isLoading}
-              className="w-full bg-teal-700 hover:bg-teal-800 disabled:bg-teal-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+              className="w-full bg-blue-300 hover:bg-blue-500 disabled:bg-blue-400 text-black font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
             >
               {isLoading ? (
                 <>
@@ -97,13 +98,15 @@ export default function ForgotPassword() {
 
             {/* Back to Login Link */}
             <div className="text-center">
-              <button
-                type="button"
-                onClick={() => console.log("Back to login")}
-                className="text-sm text-orange-500 hover:text-orange-600 font-medium"
-              >
-                ← Back to Login
-              </button>
+              <Link to="/login">
+                <button
+                  type="button"
+                  onClick={() => console.log("Back to login")}
+                  className="text-sm text-green-600 hover:text-green-700 font-medium"
+                >
+                  ← Back to Login
+                </button>
+              </Link>
             </div>
           </div>
         </div>
