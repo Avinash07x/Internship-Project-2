@@ -20,7 +20,7 @@ const Navbar = () => {
   }, []);
 
   const menuItems = [
-    { name: 'HOME', hasDropdown: false , link: '/'},
+    { name: 'HOME', hasDropdown: false , link: "/"},
     { name: 'HOSTING', hasDropdown: true },
     { name: 'SERVERS', hasDropdown: true },
     { name: 'FOREX SERVER', hasDropdown: false },
@@ -153,10 +153,10 @@ const Navbar = () => {
 
           {/* Desktop Contact + LOGIN */}
           <div className="hidden md:flex items-center space-x-4">
-            <div className="flex items-center text-teal-600 space-x-2">
+            {/* <div className="flex items-center text-teal-600 space-x-2">
               <Phone className="w-4 h-4" />
-              <span className="font-semibold">1-855-672-2788</span>
-            </div>
+              <span className="font-semibold"></span>
+            </div> */}
             <Link to="/login">
               <button className="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:from-blue-600 hover:to-blue-700 transition">
                 LOGIN
