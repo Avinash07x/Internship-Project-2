@@ -7,6 +7,7 @@ import Features from '../components/Features.jsx';
 import Esteemhost from '../components/Esteemhost.jsx';
 import ServicesSection from '../components/ServicesSection.jsx';
 import AnimatedDashboard from '../components/AnimatedDashboard.jsx';
+import Testimonials from '../components/Testimonials.jsx';
 
 
 const Homepage = () => {
@@ -20,6 +21,7 @@ const Homepage = () => {
         <Plans />
         <DCKeepersSection />
         <EsteemhostFAQ />
+        <Testimonials />
         </>
     )
 }
